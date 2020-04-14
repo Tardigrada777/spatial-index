@@ -3,6 +3,7 @@ import Victor from 'victor';
 import { QuadTree } from './QuadTree';
 import { Extent } from './Extent';
 import { intersectionOfTwoLines, Line } from './utils/intersectionOfTwoLines';
+import { getUniqueId } from './utils/uniqueId';
 
 const ext = new Extent(0, 0, 10, 10);
 const qtree = new QuadTree(ext, 15);
@@ -21,4 +22,7 @@ const B: Line = {
     end: new Point(5, 3)
 };
 
-console.log('INTERSECTION', intersectionOfTwoLines(A, B))
+// console.log('INTERSECTION', intersectionOfTwoLines(A, B))
+// console.log('uniq', getUniqueId());
+qtree.insert(new Point(7, 7));
+console.log(qtree)
