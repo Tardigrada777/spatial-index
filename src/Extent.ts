@@ -1,3 +1,5 @@
+import { Point } from './Polyline';
+
 export class Extent {
 
     constructor(
@@ -23,5 +25,34 @@ export class Extent {
         public ymax: number
 
     ) {}
+
+    /**
+     * Returns coords of center for this extent.
+     */
+    public get center() {
+        return [
+            (this.xmax - this.xmin) / 2,
+            (this.ymax - this.ymin) / 2
+        ]
+    }
+
+    public get width() {
+        return this.xmax - this.xmin;
+    }
+
+    public get height() {
+        return this.ymax - this.ymin;
+    }
+
+    /**
+     * Check if this extent contains passed point.
+     *
+     * @param point   Point.
+     */
+    public contains(point: Point) {
+        const itInXSet = point.x >= this.xmin && point.x <= this.xmax;
+        const itInYSet = point.y >= this.ymin && point.y <= this.ymax;
+        return itInXSet && itInYSet;
+    }
 
 }
